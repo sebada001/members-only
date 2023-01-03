@@ -1,7 +1,18 @@
-<% @posts.each do |p| %>
-  <div><%= p.title %></div>
-  <div><%= p.body %></div>
+
+
+<% if user_signed_in? %>
+    <% @posts.each do |p| %>
+        <div><%= p.title %></div>
+        <div><%= p.body %></div>
+        <div><%= @user.id %></div>
+    <% end %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete  %>
+    <%= button_to "New Post", new_post_path, method: :get  %>
+<% else %>
+    <% @posts.each do |p| %>
+        <div><%= p.title %></div>
+        <div><%= p.body %></div>
+    <% end %>
+    <%= button_to "Sign in", new_user_session_url, method: :get %>
 <% end %>
 
-<%= button_to "Sign out", destroy_user_session_path, method: :delete  %>
-<%= button_to "New Post", new_post_path, method: :get  %>
