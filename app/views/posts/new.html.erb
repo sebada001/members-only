@@ -1,0 +1,11 @@
+<%= form_with model: @post do |form| %>
+  <%= form.label(:title, "Title:")%>
+  <%= form.text_field(:title)%>
+  <%= form.label(:body, "Message:")%>
+  <%= form.text_field(:body)%>
+  <%= form.submit("Submit!")%>
+<% end %>
+
+<div>
+  <% @post.errors.messages.any? %>
+</div>
